@@ -8,7 +8,6 @@ dest="$curr/ip.txt"
 key="$curr/get_ip.password.tmp"
 
 encode() {
-    cd ..
     git pull
 
     cd $curr
