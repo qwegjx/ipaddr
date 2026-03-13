@@ -15,7 +15,7 @@ encode() {
     theip=$(ip addr | grep "inet6* " | sort)
 
     md5=$(echo -n "$theip" | md5sum)
-    md5file=md5.txt
+    md5file=md5.txt.tmp
     if [ "$md5" = "$(cat $md5file)" ]; then
     	echo "same md5"
     	return
