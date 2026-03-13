@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -e
+set -x
 
 cd $(dirname $0)
 curr=$(pwd)
@@ -16,7 +17,8 @@ encode() {
     md5=$(echo -n "$theip" | md5sum)
     md5file=md5.txt
     if [ "$md5" = "$(cat $md5file)" ]; then
-	    return
+    	echo "same md5"
+    	return
     fi
 
     echo $md5 > $md5file
