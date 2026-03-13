@@ -13,6 +13,13 @@ encode() {
     cd $curr
     theip=$(ip addr | grep "inet6* " | sort)
 
+    md5=$(echo -n "$theip" | md5sum)
+    md5file=md5.txt
+    if [ "$md5" = "$(cat $md5file)" ]; then
+	    return
+    fi
+
+    echo $md5 > $md5file
     echo -n "$theip" | openssl enc -aes-256-cbc -salt -base64 -k "$(cat $key)" > $dest
 
     git add $dest
