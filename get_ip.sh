@@ -21,7 +21,7 @@ encode() {
     	return
     fi
 
-    echo $md5 > $md5file
+    echo -n "$md5" > $md5file
     echo -n "$theip" | openssl enc -aes-256-cbc -salt -base64 -k "$(cat $key)" > $dest
 
     git add $dest
